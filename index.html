@@ -41,8 +41,8 @@
 
 
     <div class="btm-tips">
-        <span class="btm-tips-text">大吉又大利，万事皆顺遂!</span></br>
-        <span class="btm-tips-text">仅展示¥10以上的赞赏</span>
+        <span class="btm-tips-text">你的支持是我前进的动力!若列表加载失败请稍后重试。</span></br>
+        <span class="btm-tips-text">本页面仅展示¥10以上的赞赏</span>
     </div>
 
     <script>
@@ -64,19 +64,19 @@
                     // 创建昵称span
                     const nameSpan = document.createElement('span');
                     nameSpan.className ='reward-name';
-                    nameSpan.textContent = `昵称: ${item.昵称}`;
+                    nameSpan.textContent = `${item.昵称}`;
                     rewardItemDiv.appendChild(nameSpan);
 
                     // 创建金额span
                     const moneySpan = document.createElement('span');
                     moneySpan.className ='reward-money';
-                    moneySpan.textContent = `金额: ${item.金额}`;
+                    moneySpan.textContent = `${item.金额}`;
                     rewardItemDiv.appendChild(moneySpan);
 
                     // 创建日期span
                     const dateSpan = document.createElement('span');
                     dateSpan.className ='reward-date';
-                    dateSpan.textContent = `时间: ${item.时间}`;
+                    dateSpan.textContent = `${item.时间}`;
                     rewardItemDiv.appendChild(dateSpan);
 
                     rewardListDiv.appendChild(rewardItemDiv);
