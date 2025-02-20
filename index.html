@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>赞助页面</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+  .reward-list{
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+    }
+  .reward-list div{
+      display: flex;
+      padding: 5px;
+    }
+  .reward-list div span{
+      flex: 1;
+    }
+  </style>
 </head>
 <body>
     <div class="header">
@@ -36,8 +49,13 @@
     </div>
 
     <div class="reward-list" id="rewardList">
-        <!-- 赞赏列表将被插入这里 -->
+    <div class="reward-item">
+      <span class="reward-name">昵称</span>
+      <span class="reward-money">金额</span>
+      <span class="reward-date">时间</span>
     </div>
+    <!-- 后续通过 JavaScript 等方式插入的赞赏列表项将在这里 -->
+  </div>
 
 
     <div class="btm-tips">
