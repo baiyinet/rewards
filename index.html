@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards - 赞赏白衣的伙伴们</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+      <span class="controls-text">感谢你赐予我前进的力量！</span>
+      <img class="guli_thanks" src="img/zan.png" alt="guli_thanks">
+    </div>
+
+    <div class="qrcode">
+        <div class="qrcode-item">
+            <a href="img/qrcode/wechat.jpg" target="_blank">
+                <img src="img/qrcode/wechat.jpg" alt="微信" width="150" height="150">
+            </a>
+            <div class="qrcode-text">微信扫一扫</div>
+        </div>
+        <div class="qrcode-item">
+            <a href="img/qrcode/alipay.jpg" target="_blank">
+                <img src="img/qrcode/alipay.jpg" alt="支付宝" width="150" height="150">
+            </a>
+            <div class="qrcode-text">支付宝扫一扫</div>
+        </div>
+    </div>
+
+    <div class="controls">
+    <span id="sortSelect">
+          赞助列表
+      </span>
+      
+      <span class="controls-tips">感谢你们支持白衣及项目的发展</span>
+    </div>
+
+    <div class="reward-list" id="rewardList">
+        <!-- 赞赏列表将被插入这里 -->
+    </div>
+
+
+    <div class="btm-tips">
+        <span class="btm-tips-text">如需修改昵称信息，您可以将您的支付记录和修改昵称发送到2766521276@qq.com</span>
+        <span class="btm-tips-text">仅展示¥1以上的赞赏</span>
+    </div>
+
+    <script>
+        const rewardListDiv = document.getElementById('rewardList');
+        fetch('data.json')
+           .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+           .then(data => {
+                data.forEach(item => {
+                    // 创建一个新的div用于展示单条赞赏记录
+                    const rewardItemDiv = document.createElement('div');
+                    rewardItemDiv.className ='reward-item';
+
+                    // 创建昵称span
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className ='reward-name';
+                    nameSpan.textContent = `昵称: ${item.昵称}`;
+                    rewardItemDiv.appendChild(nameSpan);
+
+                    // 创建金额span
+                    const moneySpan = document.createElement('span');
+                    moneySpan.className ='reward-money';
+                    moneySpan.textContent = `金额: ${item.金额}`;
+                    rewardItemDiv.appendChild(moneySpan);
+
+                    // 创建日期span
+                    const dateSpan = document.createElement('span');
+                    dateSpan.className ='reward-date';
+                    dateSpan.textContent = `时间: ${item.时间}`;
+                    rewardItemDiv.appendChild(dateSpan);
+
+                    rewardListDiv.appendChild(rewardItemDiv);
+                });
+            })
+           .catch(error => {
+                console.error('Error fetching data:', error);
+                const errorDiv = document.createElement('div');
+                errorDiv.textContent = '加载数据失败，请稍后重试';
+                rewardListDiv.appendChild(errorDiv);
+            });
+    </script>
+</body>
+</html> 
