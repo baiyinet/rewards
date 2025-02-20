@@ -46,6 +46,7 @@
     </div>
 
     <script>
+    document.addEventListener('DOMContentLoaded', function () {
         const rewardListDiv = document.getElementById('rewardList');
         fetch('data.json')
            .then(response => {
@@ -86,6 +87,7 @@
                 const errorDiv = document.createElement('div');
                 errorDiv.textContent = '加载数据失败，请稍后重试';
                 rewardListDiv.appendChild(errorDiv);
+            });
             });
     </script>
 </body>
