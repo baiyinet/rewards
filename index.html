@@ -74,50 +74,53 @@
         <span class="btm-tips-text">本页面仅展示¥10以上的赞赏</span>
     </div>
 
-    <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
-        const rewardListDiv = document.getElementById('rewardList');
-        fetch('data.json')
-           .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-           .then(data => {
-                data.forEach(item => {
-                    // 创建一个新的div用于展示单条赞赏记录
-                    const rewardItemDiv = document.createElement('div');
-                    rewardItemDiv.className ='reward-item';
+      const rewardListDiv = document.getElementById('rewardList');
+      fetch('data.json')
+       .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+       .then(data => {
+          data.forEach(item => {
+            // 创建一个新的div用于展示单条赞赏记录
+            const rewardItemDiv = document.createElement('div');
+            rewardItemDiv.className ='reward-item';
 
-                    // 创建昵称span
-                    const nameSpan = document.createElement('span');
-                    nameSpan.className ='reward-name';
-                    nameSpan.textContent = `${item.昵称}`;
-                    rewardItemDiv.appendChild(nameSpan);
+            // 创建昵称span
+            const nameSpan = document.createElement('span');
+            nameSpan.className ='reward-name';
+            nameSpan.textContent = `${item.昵称}`;
+            rewardItemDiv.appendChild(nameSpan);
 
-                    // 创建金额span
-                    const moneySpan = document.createElement('span');
-                    moneySpan.className ='reward-money';
-                    moneySpan.textContent = `${item.金额}`;
-                    rewardItemDiv.appendChild(moneySpan);
+            // 创建金额span，并直接添加样式属性
+            const moneySpan = document.createElement('span');
+            moneySpan.className ='reward-money';
+            moneySpan.textContent = `${item.金额}`;
+            moneySpan.style.display = 'flex';
+            moneySpan.style.justifyContent = 'center';
+            moneySpan.style.alignItems = 'center';
+            rewardItemDiv.appendChild(moneySpan);
 
-                    // 创建日期span
-                    const dateSpan = document.createElement('span');
-                    dateSpan.className ='reward-date';
-                    dateSpan.textContent = `${item.时间}`;
-                    rewardItemDiv.appendChild(dateSpan);
+            // 创建日期span
+            const dateSpan = document.createElement('span');
+            dateSpan.className ='reward-date';
+            dateSpan.textContent = `${item.时间}`;
+            rewardItemDiv.appendChild(dateSpan);
 
-                    rewardListDiv.appendChild(rewardItemDiv);
-                });
-            })
-           .catch(error => {
-                console.error('Error fetching data:', error);
-                const errorDiv = document.createElement('div');
-                errorDiv.textContent = '加载数据失败，请稍后重试';
-                rewardListDiv.appendChild(errorDiv);
-            });
-            });
-    </script>
+            rewardListDiv.appendChild(rewardItemDiv);
+          });
+        })
+       .catch(error => {
+          console.error('Error fetching data:', error);
+          const errorDiv = document.createElement('div');
+          errorDiv.textContent = '加载数据失败，请稍后重试';
+          rewardListDiv.appendChild(errorDiv);
+        });
+    });
+  </script>
 </body>
 </html> 
